@@ -2,7 +2,7 @@ module.exports = mongoose => {
   var schema = mongoose.Schema(
     {
       title: String,
-      description: Array,
+      description: String,
       published: Boolean
     },
     { timestamps: true }

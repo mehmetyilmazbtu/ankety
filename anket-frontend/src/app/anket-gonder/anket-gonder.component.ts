@@ -15,7 +15,7 @@ export class AnketGonderComponent {
   name = 'Angular';
   tutorial: Tutorial= {
     title: '',
-    description: arr[''],
+    description: '',
     published: false
   };
   submitted = false;
@@ -53,7 +53,7 @@ export class AnketGonderComponent {
     this.submitted = false;
     this.tutorial = {
       title: '',
-      description: arr[''],
+      description: '',
       published: false
     };
   }

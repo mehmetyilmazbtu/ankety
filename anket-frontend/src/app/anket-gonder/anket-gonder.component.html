@@ -55,32 +55,32 @@
 
 <div class="container">  
     
-  <h1> Dynamically Add New Input Fields in Angular </h1>  
+  <h1> Anket OLuştur ve Gönder </h1>  
     
   <form [formGroup]="productForm">  
       
     <p>  
-      <label for="name">Product Name:</label>  
+      <label for="name">Anket Sorusu:</label>  
       <input type="text" id="name" name="name" formControlName="name" class="form-control">  
     </p>  
     
     <table class="table table-bordered" formArrayName="quantities">  
       <tr>  
-        <th colspan="2">Add Multiple Quantity:</th>  
-        <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-success-secondary">Add More</button></th>  
+        <th colspan="2">Çoklu Seçenek Ekle:</th>  
+        <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-success-secondary">Seçenek Ekle</button></th>  
       </tr>  
       <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">  
         <td>  
-            Quantity :  
+            Seçenek :  
             <input type="text" formControlName="qty" class="form-control">  
         </td>    
         <td>  
-            <button (click)="removeQuantity(i)" class="btn btn-danger-secondary">Remove</button>  
+            <button (click)="removeQuantity(i)" class="btn btn-danger-secondary">Kaldır</button>  
         </td>  
       </tr>  
     </table>  
      
-    <button (click)="saveTutorial()" class="btn btn-success">Submit</button>  
+    <button (click)="saveTutorial()" class="btn btn-success">Onayla ve Gönder</button>  
       
   </form>  
       
