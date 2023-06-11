@@ -1,28 +1,28 @@
 module.exports = app => {
-  const tutorials = require("../controllers/tutorial.controller.js");
+  const tutorials = require("../controllers/ankety.controller.js");
 
   var router = require("express").Router();
 
-  // Create a new Tutorial
-  router.post("/", tutorials.create);
+  // Create a new ankety
+  router.post("/", anketys.create);
 
-  // Retrieve all Tutorials
-  router.get("/", tutorials.findAll);
+  // Retrieve all anketys
+  router.get("/", anketys.findAll);
 
-  // Retrieve all published Tutorials
-  router.get("/published", tutorials.findAllPublished);
+  // Retrieve all published anketys
+  router.get("/published", anketys.findAllPublished);
 
-  // Retrieve a single Tutorial with id
-  router.get("/:id", tutorials.findOne);
+  // Retrieve a single ankety with id
+  router.get("/:id", anketys.findOne);
 
-  // Update a Tutorial with id
-  router.put("/:id", tutorials.update);
+  // Update a ankety with id
+  router.put("/:id", anketys.update);
 
-  // Delete a Tutorial with id
-  router.delete("/:id", tutorials.delete);
+  // Delete a ankety with id
+  router.delete("/:id", anketys.delete);
 
-  // Create a new Tutorial
-  router.delete("/", tutorials.deleteAll);
+  // Create a new ankety
+  router.delete("/", anketys.deleteAll);
 
-  app.use("/api/tutorials", router);
+  app.use("/api/anketys", router);
 };
