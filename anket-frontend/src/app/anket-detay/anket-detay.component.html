@@ -1,14 +1,13 @@
 <div *ngIf="viewMode; else editable">
     <div *ngIf="currentTutorial.id">
-      <h4>Tutorial</h4>
+      <h6>Anket:</h6>
       <div>
-        <label><strong>Title:</strong></label> {{ currentTutorial.title }}
+        <label><h5>{{ currentTutorial.title }}</h5></label> 
       </div>
       <div>
-        <label><strong>Description:</strong></label>
 
         <li *ngFor="let user of currentTutorial.description; index as i; first as isFirst">
-          {{i}}. {{user.qty}} <div class="btn btn-primary" (click)=showTut(i)> Oy Ver</div>
+          <div class="btn btn-success" (click)=showTut(i)> Oy Ver</div> {{user.qty}} 
         </li>
 
       </div>

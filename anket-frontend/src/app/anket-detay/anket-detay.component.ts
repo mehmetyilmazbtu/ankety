@@ -95,9 +95,11 @@ export class AnketDetayComponent implements OnInit {
   showTut(i) {
     const voted = this.currentTutorial.voted
     const findIp = voted?.find(el => el === this.ipAddress)
-    console.log(findIp)
     if (findIp) {
-      console.log("Daha önce oy verdiniz...")
+      console.log("Daha önce bu ankete oy verdiniz...")
+    }
+    else if(this.ipAddress==''){
+      console.log("Lütfen birkaç saniye sonra tekrar deneyiniz.")
     }
     else {
       this.currentTutorial.description[i].count++

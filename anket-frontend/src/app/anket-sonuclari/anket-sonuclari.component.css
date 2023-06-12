@@ -3,9 +3,12 @@
     flex-wrap: nowrap;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
 }
 .container{
     display: flex;
+    justify-content: space-evenly;
+    margin-top: 30px;
     flex-direction: column;
-    margin-top: 3%;
+    align-items: center;
 }
