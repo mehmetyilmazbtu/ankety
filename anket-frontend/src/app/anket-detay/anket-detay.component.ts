@@ -3,6 +3,7 @@ import { AnketService } from '../anket-servis.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tutorial } from '../models/anket.model';
 import { arr } from '../models/anket.array.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-anket-detay',
@@ -12,25 +13,29 @@ import { arr } from '../models/anket.array.model';
 export class AnketDetayComponent implements OnInit {
 
   @Input() viewMode = false;
+  ipAddress = ''
 
   @Input() currentTutorial: Tutorial = {
     title: '',
     description: arr[''],
-    published: false
+    voted: Array['']
   };
-  
+
   message = '';
 
   constructor(
     private tutorialService: AnketService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private http: HttpClient) { }
 
   ngOnInit(): void {
     if (!this.viewMode) {
       this.message = '';
       this.getTutorial(this.route.snapshot.params["id"]);
     }
+    this.getIpFrom()
+
   }
 
   getTutorial(id: string): void {
@@ -48,7 +53,7 @@ export class AnketDetayComponent implements OnInit {
     const data = {
       title: this.currentTutorial.title,
       description: this.currentTutorial.description,
-      published: status
+
     };
 
     this.message = '';
@@ -57,7 +62,7 @@ export class AnketDetayComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.currentTutorial.published = status;
+
           this.message = res.message ? res.message : 'The status was updated successfully!';
         },
         error: (e) => console.error(e)
@@ -87,5 +92,23 @@ export class AnketDetayComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
+  showTut(i) {
+    const voted = this.currentTutorial.voted
+    const findIp = voted?.find(el => el === this.ipAddress)
+    console.log(findIp)
+    if (findIp) {
+      console.log("Daha önce oy verdiniz...")
+    }
+    else {
+      this.currentTutorial.description[i].count++
+      this.currentTutorial.voted.push(this.ipAddress)
+      this.updateTutorial()
+    }
+  }
 
+  getIpFrom(){
+    this.http.get("http://api.ipify.org/?format=json").subscribe((res: any) => {
+        this.ipAddress=res.ip
+      });
+  }
 }

@@ -8,21 +8,12 @@
         <label><strong>Description:</strong></label>
 
         <li *ngFor="let user of currentTutorial.description; index as i; first as isFirst">
-          {{i}}. {{user.qty}}
+          {{i}}. {{user.qty}} <div class="btn btn-primary" (click)=showTut(i)> Oy Ver</div>
         </li>
 
       </div>
-      <div>
-        <label><strong>Status:</strong></label>
-        {{ currentTutorial.published ? "Published" : "Pending" }}
-      </div>
+      
   
-      <a
-        class="btn btn-success"
-        routerLink="/anket-sayfasi/{{ currentTutorial.id }}"
-      >
-        Edit
-      </a>
     </div>
   
     <div *ngIf="!currentTutorial">
@@ -55,30 +46,14 @@
             name="description"
           />
           <li *ngFor="let user of currentTutorial.description; index as i; first as isFirst">
-            {{i}}. {{user.qty}}
+            {{i}}. {{user.qty}}<div class="btn btn-primary"> Oy Ver</div>
           </li>
         </div>
   
-        <div class="form-group">
-          <label><strong>Status:</strong></label>
-          {{ currentTutorial.published ? "Published" : "Pending" }}
-        </div>
+        
       </form>
   
-      <button
-        class="btn btn-secondary"
-        *ngIf="currentTutorial.published"
-        (click)="updatePublished(false)"
-      >
-        UnPublish
-      </button>
-      <button
-        *ngIf="!currentTutorial.published"
-        class="btn btn-primary"
-        (click)="updatePublished(true)"
-      >
-        Publish
-      </button>
+      
   
       <button class="btn btn-danger" (click)="deleteTutorial()">
         Delete

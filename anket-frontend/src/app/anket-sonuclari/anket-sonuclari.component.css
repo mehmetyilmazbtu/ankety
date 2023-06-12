@@ -1,0 +1,11 @@
+.anket-sonuclari{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+}

@@ -4,6 +4,7 @@ import { Tutorial } from '../models/anket.model';
 import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 import { arr } from '../models/anket.array.model';
 
+
 @Component({
   selector: 'app-anket-gonder',
   templateUrl: './anket-gonder.component.html',
@@ -16,7 +17,7 @@ export class AnketGonderComponent {
   tutorial: Tutorial= {
     title: '',
     description: arr[''],
-    published: false
+    voted: Array['']
   };
   submitted = false;
   fieldArray: Array<any> = [];
@@ -27,7 +28,8 @@ export class AnketGonderComponent {
     private fb:FormBuilder) {
       this.productForm = this.fb.group({  
         name: '',  
-        quantities: this.fb.array([]) ,  
+        quantities: this.fb.array([]) ,
+        voted: this.fb.array([])  
       });  
     }
   
@@ -35,7 +37,8 @@ export class AnketGonderComponent {
   saveTutorial(): void {
     const data = {
       title: this.productForm.value.name,
-      description: this.productForm.value.quantities
+      description: this.productForm.value.quantities,
+      voted: this.productForm.value.voted
     };
 
     this.anketService.create(data)
@@ -54,7 +57,7 @@ export class AnketGonderComponent {
     this.tutorial = {
       title: '',
       description: arr[''],
-      published: false
+      voted: Array['']
     };
   }
   addFieldValue() {
@@ -75,7 +78,8 @@ export class AnketGonderComponent {
      
   newQuantity(): FormGroup {  
     return this.fb.group({  
-      qty: '',    
+      qty: '',
+      count: ''
     })  
   }  
      
